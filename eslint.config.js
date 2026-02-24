@@ -4,6 +4,7 @@ import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import unicorn from 'eslint-plugin-unicorn';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import ts from 'typescript-eslint';
@@ -21,7 +22,8 @@ export default defineConfig(
 	{
 		languageOptions: { globals: { ...globals.browser, ...globals.node } },
 		plugins: {
-			'simple-import-sort': simpleImportSort
+			'simple-import-sort': simpleImportSort,
+			unicorn
 		},
 		rules: {
 			'no-undef': 'off',
@@ -92,6 +94,18 @@ export default defineConfig(
 				{
 					selector: 'import',
 					format: ['camelCase', 'PascalCase', 'kebab-case']
+				}
+			]
+		}
+	},
+	{
+		files: ['src/**/*.{ts,tsx,svelte,js,jsx}'],
+		rules: {
+			'unicorn/filename-case': [
+				'error',
+				{
+					case: 'kebabCase',
+					ignore: ['^\\+']
 				}
 			]
 		}
