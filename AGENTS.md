@@ -44,6 +44,7 @@ import { colors } from '../../../styles/theme';
 ```
 
 **Available aliases:**
+
 - `@styles` → `./src/styles`
 - `@theme` → `./src/styles/theme`
 - `@components` → `./src/lib/components`
@@ -58,35 +59,35 @@ import { colors } from '../../../styles/theme';
 ### Lightning CSS + Design Tokens
 
 This project uses **Lightning CSS** with custom visitors for:
+
 1. **px → rem conversion** - All `px` values automatically convert to `rem` (base: 16px)
 2. **Environment variables** - TypeScript design tokens injected as `env()` variables
 
 ### Using Design Tokens
 
 **In CSS:**
+
 ```css
 .card {
-  padding: env(--space-md);              /* 16px → 1rem */
-  background: env(--color-light-primary); /* #ffffff */
-  box-shadow: env(--shadow-lg);
-  transition: all env(--transition-base);
-  font-family: env(--font-sans);         /* Montserrat */
+	padding: env(--space-md); /* 16px → 1rem */
+	background: env(--color-light-primary); /* #ffffff */
+	box-shadow: env(--shadow-lg);
+	transition: all env(--transition-base);
+	font-family: env(--font-sans); /* Montserrat */
 }
 
 .code {
-  font-family: env(--font-mono);         /* SF Mono */
+	font-family: env(--font-mono); /* SF Mono */
 }
 
 /* Light/Dark mode */
 :root {
-  --color-primary: light-dark(
-    env(--color-light-primary),
-    env(--color-dark-primary)
-  );
+	--color-primary: light-dark(env(--color-light-primary), env(--color-dark-primary));
 }
 ```
 
 **In TypeScript/Svelte:**
+
 ```typescript
 import { colors, Variables } from '@theme';
 
@@ -103,25 +104,26 @@ Edit `src/styles/theme/variables.ts`:
 
 ```typescript
 export const Variables = {
-  color: {
-    light: colors.light,
-    dark: colors.dark
-  },
-  space: {
-    xs: '4px',
-    sm: '8px',
-    md: '16px',
-    // Add more...
-  },
-  // Add new categories...
-  radius: {
-    sm: '4px',
-    md: '8px'
-  }
+	color: {
+		light: colors.light,
+		dark: colors.dark
+	},
+	space: {
+		xs: '4px',
+		sm: '8px',
+		md: '16px'
+		// Add more...
+	},
+	// Add new categories...
+	radius: {
+		sm: '4px',
+		md: '8px'
+	}
 };
 ```
 
 Variables are automatically:
+
 - Flattened: `space.md` → `env(--space-md)`
 - Converted: `16px` → `1rem`
 - Available in CSS via `env(--variable-name)`
@@ -142,20 +144,21 @@ Variables are automatically:
 ```typescript
 // ✅ Good
 interface UserProfile {
-  name: string;
-  age: number;
+	name: string;
+	age: number;
 }
 
 function getUserData(userId: string): Promise<UserProfile> {
-  // implementation
+	// implementation
 }
 
 const MAX_RETRIES = 3;
 
 // ❌ Bad
-function getData(id: any) {  // No 'any'
-  const unused = 5;          // Unused variable
-  return data;               // No return type
+function getData(id: any) {
+	// No 'any'
+	const unused = 5; // Unused variable
+	return data; // No return type
 }
 ```
 
@@ -203,51 +206,51 @@ Run `pnpm format` to auto-fix import order.
 
 ```svelte
 <script lang="ts">
-  // 1. Imports (sorted)
-  import { onMount } from 'svelte';
-  import Button from '@components/Button.svelte';
-  import type { User } from '@modules/auth';
+	// 1. Imports (sorted)
+	import { onMount } from 'svelte';
+	import Button from '@components/Button.svelte';
+	import type { User } from '@modules/auth';
 
-  // 2. Props
-  interface Props {
-    user: User;
-    onSave?: () => void;
-  }
-  
-  let { user, onSave }: Props = $props();
+	// 2. Props
+	interface Props {
+		user: User;
+		onSave?: () => void;
+	}
 
-  // 3. State
-  let isLoading = $state(false);
-  let count = $state(0);
+	let { user, onSave }: Props = $props();
 
-  // 4. Derived state
-  let displayName = $derived(user.name.toUpperCase());
+	// 3. State
+	let isLoading = $state(false);
+	let count = $state(0);
 
-  // 5. Functions
-  function handleClick() {
-    count++;
-    onSave?.();
-  }
+	// 4. Derived state
+	let displayName = $derived(user.name.toUpperCase());
 
-  // 6. Lifecycle
-  onMount(() => {
-    // initialization
-  });
+	// 5. Functions
+	function handleClick() {
+		count++;
+		onSave?.();
+	}
+
+	// 6. Lifecycle
+	onMount(() => {
+		// initialization
+	});
 </script>
 
 <!-- Template -->
 <div class="container">
-  <Button onclick={handleClick}>
-    {displayName}
-  </Button>
+	<Button onclick={handleClick}>
+		{displayName}
+	</Button>
 </div>
 
 <!-- Scoped styles -->
 <style>
-  .container {
-    padding: env(--space-md);
-    background: env(--color-light-primary);
-  }
+	.container {
+		padding: env(--space-md);
+		background: env(--color-light-primary);
+	}
 </style>
 ```
 
@@ -324,12 +327,12 @@ Create visitors in `vite-plugins/lightningcss/`:
 import type { CustomAtRules, Visitor } from 'lightningcss';
 
 export function myVisitor(): Visitor<CustomAtRules> {
-  return {
-    Length(length) {
-      // Transform length values
-      return length;
-    }
-  };
+	return {
+		Length(length) {
+			// Transform length values
+			return length;
+		}
+	};
 }
 ```
 
@@ -340,10 +343,10 @@ import { composeVisitors } from 'lightningcss';
 import { pxToRem, environmentVariables, myVisitor } from './vite-plugins/lightningcss';
 
 visitor: composeVisitors([
-  pxToRem(),
-  environmentVariables({ variables: Variables, breakpoints: Breakpoints }),
-  myVisitor()
-])
+	pxToRem(),
+	environmentVariables({ variables: Variables, breakpoints: Breakpoints }),
+	myVisitor()
+]);
 ```
 
 ---
@@ -351,6 +354,7 @@ visitor: composeVisitors([
 ## Best Practices
 
 ### 1. Minimal Code
+
 Write the **absolute minimum** code needed. Avoid verbose implementations.
 
 ```typescript
@@ -360,48 +364,52 @@ const active = status === 'active';
 // ❌ Bad
 let active: boolean;
 if (status === 'active') {
-  active = true;
+	active = true;
 } else {
-  active = false;
+	active = false;
 }
 ```
 
 ### 2. Type Safety
+
 Always provide types, never use `any`.
 
 ```typescript
 // ✅ Good
 function process(data: User[]): string[] {
-  return data.map(u => u.name);
+	return data.map((u) => u.name);
 }
 
 // ❌ Bad
 function process(data: any) {
-  return data.map((u: any) => u.name);
+	return data.map((u: any) => u.name);
 }
 ```
 
 ### 3. Use Aliases
+
 Never use relative imports when aliases are available.
 
 ### 4. Design Tokens
+
 Use `env()` variables in CSS, never hardcode values.
 
 ```css
 /* ✅ Good */
 .card {
-  padding: env(--space-md);
-  color: env(--color-light-primary);
+	padding: env(--space-md);
+	color: env(--color-light-primary);
 }
 
 /* ❌ Bad */
 .card {
-  padding: 16px;
-  color: #ffffff;
+	padding: 16px;
+	color: #ffffff;
 }
 ```
 
 ### 5. Component Composition
+
 Keep components small and focused. Extract reusable logic.
 
 ---
@@ -417,27 +425,27 @@ Keep components small and focused. Extract reusable logic.
 
 ```svelte
 <script lang="ts">
-  interface Props {
-    title: string;
-    variant?: 'primary' | 'secondary';
-  }
-  
-  let { title, variant = 'primary' }: Props = $props();
+	interface Props {
+		title: string;
+		variant?: 'primary' | 'secondary';
+	}
+
+	let { title, variant = 'primary' }: Props = $props();
 </script>
 
 <button class="btn {variant}">
-  {title}
+	{title}
 </button>
 
 <style>
-  .btn {
-    padding: env(--space-sm) env(--space-md);
-    transition: all env(--transition-fast);
-  }
-  
-  .primary {
-    background: env(--color-light-primary);
-  }
+	.btn {
+		padding: env(--space-sm) env(--space-md);
+		transition: all env(--transition-fast);
+	}
+
+	.primary {
+		background: env(--color-light-primary);
+	}
 </style>
 ```
 
@@ -452,6 +460,7 @@ Keep components small and focused. Extract reusable logic.
 ## Questions?
 
 When in doubt:
+
 1. Check existing code for patterns
 2. Follow TypeScript strict mode
 3. Use design tokens via `env()`

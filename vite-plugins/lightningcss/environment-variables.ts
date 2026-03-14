@@ -47,7 +47,7 @@ function flattenToEnvironment(obj: unknown | Record<string, unknown>) {
 
 export function environmentVariables({
 	variables,
-	breakpoints,
+	breakpoints
 }: {
 	variables: unknown | Record<string, unknown>;
 	breakpoints?: Record<string, string>;
@@ -58,7 +58,7 @@ export function environmentVariables({
 			if (!breakpoints || !query.condition) return;
 			if (query.condition.type !== 'feature') return;
 			if (query.condition.value.type !== 'boolean') return;
-			
+
 			const key = query.condition.value.name.replace(/^--/, '');
 			if (breakpoints[key]) {
 				return { raw: breakpoints[key] };

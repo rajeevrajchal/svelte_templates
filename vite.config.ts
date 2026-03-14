@@ -19,5 +19,12 @@ export default defineConfig({
 			])
 		}
 	},
-	plugins: [sveltekit()]
+	plugins: [sveltekit()],
+	build: {
+		rolldownOptions: {
+			output: {
+				minify: { compress: { drop: ['console'] } }
+			}
+		}
+	}
 });
