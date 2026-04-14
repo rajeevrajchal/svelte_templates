@@ -11,6 +11,10 @@
 	--color-text: light-dark(env(--color-dark-primary), env(--color-light-primary));
 }
 
+html {
+	font-size: 16px;
+}
+
 body {
 	position: relative;
 	margin: 0;
@@ -25,4 +29,20 @@ body {
 .app-content {
 	width: min(100vw - (2 * var(--layout-gutter)), var(--content-max-width));
 	margin-inline: auto;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
+
+	@media (--md) {
+		grid-template-columns: repeat(8, 1fr);
+		gap: 12px;
+	}
+
+	@media (--lg) {
+		grid-template-columns: repeat(12, 1fr);
+		gap: 20px;
+	}
 }

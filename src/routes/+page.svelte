@@ -1,2 +1,22 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<div class="grid">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+</div>
+
+<style>
+	.col {
+		background-color: #ccc;
+		min-height: 100px;
+		height: auto;
+	}
+</style>

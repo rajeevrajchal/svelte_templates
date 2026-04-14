@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	import { Breakpoints } from '@theme';
-
 	interface Props {
 		visible: boolean;
 		targetSelector?: string;
@@ -16,8 +14,8 @@
 		color?: string;
 	}
 
-	const MD_BREAKPOINT = Number.parseInt(Breakpoints.md, 10);
-	const LG_BREAKPOINT = Number.parseInt(Breakpoints.lg, 10);
+	const MD_BREAKPOINT = 570;
+	const LG_BREAKPOINT = 760;
 
 	let {
 		visible,
