@@ -13,16 +13,7 @@
 
 {#if dev}
 	<DebugGridOverlay visible={tweakPaneStore.showDebugGrid} />
-	<DebugLayoutOverlay
-		visible={tweakPaneStore.showDebugLayout}
-		targetSelector=".app-content"
-		columnsMobile={3}
-		columnsTablet={8}
-		columnsDesktop={12}
-		columnGapMobile={8}
-		columnGapTablet={12}
-		columnGapDesktop={20}
-	/>
+	<DebugLayoutOverlay visible={tweakPaneStore.showDebugLayout} targetSelector=".app-content" />
 	<TweakPane
 		bind:showDebugGrid={tweakPaneStore.showDebugGrid}
 		bind:showDebugLayout={tweakPaneStore.showDebugLayout}

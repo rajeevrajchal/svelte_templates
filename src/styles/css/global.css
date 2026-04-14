@@ -33,16 +33,16 @@ body {
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 8px;
+	grid-template-columns: repeat(env(--grid-columns-mobile), 1fr);
+	gap: env(--grid-gap-mobile);
 
 	@media (--md) {
-		grid-template-columns: repeat(8, 1fr);
-		gap: 12px;
+		grid-template-columns: repeat(env(--grid-columns-tablet), 1fr);
+		gap: env(--grid-gap-tablet);
 	}
 
 	@media (--lg) {
-		grid-template-columns: repeat(12, 1fr);
-		gap: 20px;
+		grid-template-columns: repeat(env(--grid-columns-desktop), 1fr);
+		gap: env(--grid-gap-desktop);
 	}
 }
