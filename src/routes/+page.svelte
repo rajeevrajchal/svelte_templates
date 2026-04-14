@@ -1,22 +1,3 @@
-<div class="grid">
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-	<div class="col"></div>
-</div>
-
-<style>
-	.col {
-		background-color: #ccc;
-		min-height: 100px;
-		height: auto;
-	}
-</style>
+<h1 class="text-xxl">Welcome</h1>
+<h2 class="text-sm">Hi</h2>
+<p>Hello Svelte</p>

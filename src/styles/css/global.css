@@ -1,3 +1,5 @@
+@import './text.css';
+
 :root {
 	color-scheme: light dark;
 
@@ -11,8 +13,9 @@
 	--color-text: light-dark(env(--color-dark-primary), env(--color-light-primary));
 }
 
+/* All px will be change to rem */
 html {
-	font-size: 16px;
+	font-size: 0.0625rem; /* 1rem = 16px so it 1px to 0.0625rem */
 }
 
 body {

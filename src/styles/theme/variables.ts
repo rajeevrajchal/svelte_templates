@@ -14,12 +14,12 @@ export const Variables = {
 		dark: colors.dark
 	},
 	space: {
-		xs: '4px',
-		sm: '8px',
-		md: '16px',
-		lg: '24px',
-		xl: '32px',
-		'2xl': '48px'
+		xs: '4rem',
+		sm: '8rem',
+		md: '16rem',
+		lg: '24rem',
+		xl: '32rem',
+		xxl: '48rem'
 	},
 	shadow: {
 		sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
