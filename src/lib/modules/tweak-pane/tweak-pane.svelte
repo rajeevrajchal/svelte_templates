@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button, Checkbox, Pane, Slider } from 'svelte-tweakpane-ui';
-
+	import { Button, Checkbox, Pane, Slider, Text } from 'svelte-tweakpane-ui';
+	import { innerWidth, innerHeight } from 'svelte/reactivity/window';
 	import { DEFAULT_TWEAK_STATE } from '@modules/tweak-pane/tweak-state';
 
 	interface Props {
@@ -23,8 +23,9 @@
 </script>
 
 <Pane position="draggable" title="Tweak" expanded={true} width={300}>
-	<Checkbox bind:value={showDebugGrid} label="Debug Grid" />
+	<Text value={`${innerWidth.current} X ${innerHeight.current}`} label="Size" disabled />
 	<Checkbox bind:value={showDebugLayout} label="Debug Layout" />
+	<Checkbox bind:value={showDebugGrid} label="Debug Grid" />
 	<Slider bind:value={contentMaxWidth} label="Max Width" min={640} max={1440} step={20} />
 	<Button title="Reset" on:click={resetControls} />
 </Pane>
