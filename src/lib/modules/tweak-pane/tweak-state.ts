@@ -2,6 +2,9 @@ export interface TweakState {
 	showDebugGrid: boolean;
 	showDebugLayout: boolean;
 	contentMaxWidth: number;
+	showDesignOverlay: boolean;
+	designOverlayImageUrl: string;
+	designOverlayOpacity: number;
 }
 
 export const TWEAK_STORAGE_KEY = 'sunita:tweak-state:v1';
@@ -9,7 +12,10 @@ export const TWEAK_STORAGE_KEY = 'sunita:tweak-state:v1';
 export const DEFAULT_TWEAK_STATE: TweakState = {
 	showDebugGrid: false,
 	showDebugLayout: false,
-	contentMaxWidth: 960
+	contentMaxWidth: 960,
+	showDesignOverlay: false,
+	designOverlayImageUrl: '',
+	designOverlayOpacity: 0.4
 };
 
 function clamp(value: number, min: number, max: number): number {
@@ -24,7 +30,10 @@ function normalizeState(state: Partial<TweakState>): TweakState {
 			Number(state.contentMaxWidth ?? DEFAULT_TWEAK_STATE.contentMaxWidth),
 			640,
 			1440
-		)
+		),
+		showDesignOverlay: DEFAULT_TWEAK_STATE.showDesignOverlay,
+		designOverlayImageUrl: DEFAULT_TWEAK_STATE.designOverlayImageUrl,
+		designOverlayOpacity: DEFAULT_TWEAK_STATE.designOverlayOpacity
 	};
 }
 

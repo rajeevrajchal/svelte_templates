@@ -5,6 +5,7 @@
 	import TweakPane from './tweak-pane.svelte';
 	import { dev } from '$app/environment';
 	import { tweakPaneStore } from './tweak-pane-state.svelte.ts';
+	import DebugDesignOverlay from './debug-design-overlay.svelte';
 
 	onMount(() => {
 		tweakPaneStore.initialize();
@@ -14,6 +15,10 @@
 {#if dev}
 	<DebugGridOverlay visible={tweakPaneStore.showDebugGrid} />
 	<DebugLayoutOverlay visible={tweakPaneStore.showDebugLayout} targetSelector=".app-content" />
+	<DebugDesignOverlay
+		imageUrl={tweakPaneStore.designOverlayImageUrl}
+		opacity={tweakPaneStore.designOverlayOpacity}
+	/>
 	<TweakPane
 		bind:showDebugGrid={tweakPaneStore.showDebugGrid}
 		bind:showDebugLayout={tweakPaneStore.showDebugLayout}
