@@ -6,9 +6,11 @@
 		Pane,
 		Separator,
 		Slider,
+		Text,
 		type FileValue
 	} from 'svelte-tweakpane-ui';
 
+	import { innerWidth, innerHeight } from 'svelte/reactivity/window';
 	import { DEFAULT_TWEAK_STATE } from '@modules/tweak-pane/tweak-state';
 
 	interface Props {
@@ -52,9 +54,9 @@
 </script>
 
 <Pane position="draggable" title="Tweak" expanded={true} width={300}>
-	<Checkbox bind:value={showDebugGrid} label="Debug Grid" />
+	<Text value={`${innerWidth.current} X ${innerHeight.current}`} label="Size" disabled />
 	<Checkbox bind:value={showDebugLayout} label="Debug Layout" />
-
+	<Checkbox bind:value={showDebugGrid} label="Debug Grid" />
 	<Separator />
 	<File bind:value={designFile} label="Image" extensions={['.png', '.jpg', '.jpeg']} rows={2} />
 	<Slider
