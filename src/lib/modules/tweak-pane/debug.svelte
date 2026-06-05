@@ -1,15 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import DebugGridOverlay from './debug-grid-overlay.svelte';
-	import DebugLayoutOverlay from './debug-layout-overlay.svelte';
-	import TweakPane from './tweak-pane.svelte';
 	import { dev } from '$app/environment';
+	import DebugDesignOverlay from './components/debug-design-overlay.svelte';
+	import DebugGridOverlay from './components/debug-grid-overlay.svelte';
+	import DebugLayoutOverlay from './components/debug-layout-overlay.svelte';
+	import TweakPane from './components/tweak-pane.svelte';
 	import { tweakPaneStore } from './tweak-pane-state.svelte.ts';
-	import DebugDesignOverlay from './debug-design-overlay.svelte';
-
-	onMount(() => {
-		tweakPaneStore.initialize();
-	});
 </script>
 
 {#if dev}
@@ -19,9 +14,5 @@
 		imageUrl={tweakPaneStore.designOverlayImageUrl}
 		opacity={tweakPaneStore.designOverlayOpacity}
 	/>
-	<TweakPane
-		bind:showDebugGrid={tweakPaneStore.showDebugGrid}
-		bind:showDebugLayout={tweakPaneStore.showDebugLayout}
-		bind:contentMaxWidth={tweakPaneStore.contentMaxWidth}
-	/>
+	<TweakPane />
 {/if}

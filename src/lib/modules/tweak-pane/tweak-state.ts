@@ -2,18 +2,16 @@ export interface TweakState {
 	showDebugGrid: boolean;
 	showDebugLayout: boolean;
 	contentMaxWidth: number;
-	showDesignOverlay: boolean;
 	designOverlayImageUrl: string;
 	designOverlayOpacity: number;
 }
 
-export const TWEAK_STORAGE_KEY = 'sunita:tweak-state:v1';
+export const TWEAK_STORAGE_KEY = 'techarchive:tweak-state:v1';
 
 export const DEFAULT_TWEAK_STATE: TweakState = {
 	showDebugGrid: false,
 	showDebugLayout: false,
-	contentMaxWidth: 960,
-	showDesignOverlay: false,
+	contentMaxWidth: 1440,
 	designOverlayImageUrl: '',
 	designOverlayOpacity: 0.4
 };
@@ -31,7 +29,6 @@ function normalizeState(state: Partial<TweakState>): TweakState {
 			640,
 			1440
 		),
-		showDesignOverlay: DEFAULT_TWEAK_STATE.showDesignOverlay,
 		designOverlayImageUrl: DEFAULT_TWEAK_STATE.designOverlayImageUrl,
 		designOverlayOpacity: DEFAULT_TWEAK_STATE.designOverlayOpacity
 	};
