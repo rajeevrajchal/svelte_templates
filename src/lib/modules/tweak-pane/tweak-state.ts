@@ -6,7 +6,7 @@ export interface TweakState {
 	designOverlayOpacity: number;
 }
 
-export const TWEAK_STORAGE_KEY = 'techarchive:tweak-state:v1';
+export const TWEAK_STORAGE_KEY = 'template:tweak-state:v1';
 
 export const DEFAULT_TWEAK_STATE: TweakState = {
 	showDebugGrid: false,
